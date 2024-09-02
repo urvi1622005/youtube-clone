@@ -1,31 +1,63 @@
+// src/components/Videos.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, SimpleGrid, Image, Text } from '@chakra-ui/react';
+import { Box, Image, Text, Flex, Grid } from '@chakra-ui/react';
 
-const VideoCard = ({ id, title, thumbnail }) => (
-  <Box>
-    <Link to={`/video/${id}`}>
-      <Image src={thumbnail} alt={title} rounded="md" />
-      <Text mt="2" fontSize="sm" fontWeight="bold">
-        {title}
-      </Text>
-    </Link>
-  </Box>
-);
+const VideoCard = ({ thumbnail, title, channel, views, uploaded }) => {
+  return (
+    <Box w="100%" maxW="sm" mb="8" bg="gray-800" borderRadius="lg" overflow="hidden" shadow="lg">
+      <Image src={thumbnail} alt={title} w="100%" h="200px" objectFit="cover" />
+      <Box p="4">
+        <Text fontSize="lg" fontWeight="bold" mb="2" color="white" noOfLines={2}>
+          {title}
+        </Text>
+        <Text fontSize="md" color="gray-400" noOfLines={1}>
+          {channel}
+        </Text>
+        <Flex justifyContent="space-between" alignItems="center" mt="2">
+          <Text fontSize="sm" color="gray-400">
+            {views} views
+          </Text>
+          <Text fontSize="sm" color="gray-400">
+            {uploaded}
+          </Text>
+        </Flex>
+      </Box>
+    </Box>
+  );
+};
 
 const Videos = () => {
   const videoData = [
-    { id: '1', title: 'Video 1', thumbnail: 'https://via.placeholder.com/150' },
-    { id: '2', title: 'Video 2', thumbnail: 'https://via.placeholder.com/150' },
-    // More video data...
+    {
+      thumbnail: 'https://via.placeholder.com/300x200',
+      title: 'Video Title 1',
+      channel: 'Channel Name 1',
+      views: '1M',
+      uploaded: '2 days ago',
+    },
+    {
+      thumbnail: 'https://via.placeholder.com/300x200',
+      title: 'Video Title 2',
+      channel: 'Channel Name 2',
+      views: '500K',
+      uploaded: '1 week ago',
+    },
+    // Add more videos here
   ];
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing="4">
-      {videoData.map((video) => (
-        <VideoCard key={video.id} id={video.id} title={video.title} thumbnail={video.thumbnail} />
+    <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6} p={4}>
+      {videoData.map((video, index) => (
+        <VideoCard
+          key={index}
+          thumbnail={video.thumbnail}
+          title={video.title}
+          channel={video.channel}
+          views={video.views}
+          uploaded={video.uploaded}
+        />
       ))}
-    </SimpleGrid>
+    </Grid>
   );
 };
 
