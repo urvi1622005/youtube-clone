@@ -1,11 +1,19 @@
+import React, { useState } from 'react';
 import { IoMenu, IoSearch } from "react-icons/io5";
 import { RiVideoAddLine } from "react-icons/ri";
 
-function Navbar({ onMenuClick }) {
+function Navbar({ onMenuClick, onSearch }) {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchTerm);
+  };
+
   return (
     <div className="bg-gray-900 text-white py-3 flex items-center px-4 shadow-lg">
       <div className="flex items-center mr-4">
-        <IoMenu size="24px" color="white" onClick={onMenuClick} />
+        <IoMenu size="24px" color="white" onClick={onMenuClick} className="cursor-pointer" />
       </div>
 
       <img
@@ -14,21 +22,23 @@ function Navbar({ onMenuClick }) {
         className="h-8 w-auto mx-2 object-contain"
       />
 
-      <div className="flex items-center flex-grow ml-10 max-w-xl">
+      <form onSubmit={handleSubmit} className="flex items-center flex-grow ml-10 max-w-xl">
         <div className="relative flex items-center w-full">
           <input
             type="text"
-            className="block w-full bg-gray-800 text-white border-0 pl-4 pr-10 py-2 rounded-full sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="block w-full bg-gray-800 text-white border-0 pl-4 pr-10 py-2 rounded-l-full sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
             placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button
-            type="button"
+            type="submit"
             className="absolute right-0 top-0 flex items-center justify-center w-12 h-full bg-gray-700 rounded-r-full hover:bg-gray-600"
           >
             <IoSearch className="w-6 h-6 text-white" />
           </button>
         </div>
-      </div>
+      </form>
 
       <div className="flex items-center space-x-4 ml-auto">
         <button
