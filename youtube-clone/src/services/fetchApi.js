@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-const API_KEY = ''; 
-const API_URL = 'https://www.googleapis.com/youtube/v3/search';
+const API_KEY = 'AIzaSyDWjlU8Qj0IBNO4v4sGryamK7fc_3lh5c4'; 
+const API_URL = 'https://console.cloud.google.com/apis/credentials?project=flash-etching-435301-f5&supportedpurview=project';
 
 export const fetchYouTubeVideos = async (query, maxResults = 10) => {
   try {
