@@ -1,3 +1,4 @@
+import './fetchApi.js'
 export const fetchYouTubeVideos = async (query, maxResults = 10) => {
     try {
       const params = {
