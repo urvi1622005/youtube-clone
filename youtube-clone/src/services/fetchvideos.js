@@ -4,7 +4,7 @@ export const fetchYouTubeVideos = async (query, maxResults = 10) => {
       const params = {
         part: 'snippet',
         maxResults: maxResults,
-        key:'AIzaSyDWjlU8Qj0IBNO4v4sGryamK7fc_3lh5c4'
+        key:
       };
   
       if (query.length === 11) {
