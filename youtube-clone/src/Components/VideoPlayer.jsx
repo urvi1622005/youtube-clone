@@ -6,7 +6,7 @@ const Videos = () => {
   const videoData = [
     { id: 'video1', title: 'Video 1', thumbnail: 'path/to/thumbnail1.jpg' },
     { id: 'video2', title: 'Video 2', thumbnail: 'path/to/thumbnail2.jpg' },
-    // Add more video data here...
+  
   ];
 
   return (
