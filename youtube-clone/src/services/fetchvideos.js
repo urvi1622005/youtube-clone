@@ -1,10 +1,11 @@
-import './fetchApi.js'
+import './fetchApi.jsx'
+import '../Utils/rapidapi.js'
 export const fetchYouTubeVideos = async (query, maxResults = 10) => {
     try {
       const params = {
         part: 'snippet',
         maxResults: maxResults,
-        key:
+        key:"https://pixabay.com/api/videos/"
       };
   
       if (query.length === 11) {
