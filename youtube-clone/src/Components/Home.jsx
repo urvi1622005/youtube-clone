@@ -12,7 +12,7 @@ const youtubeApi = axios.create({
   params: {
     part: 'snippet',
     maxResults: 50,
-    key: 'YOUR_API_KEY_HERE', // Replace with your actual API key
+    key: 'YOUR_API_KEY_HERE', 
   },
 });
 
@@ -29,7 +29,7 @@ const Home = () => {
     queryFn: () => 
       youtubeApi.get('/search', { params: { q: searchTerm || 'popular videos' } })
         .then(res => res.data.items),
-    enabled: !!searchTerm, // Only run the query if there's a search term
+    enabled: !!searchTerm, 
   });
 
   const handleSearch = (term) => {
