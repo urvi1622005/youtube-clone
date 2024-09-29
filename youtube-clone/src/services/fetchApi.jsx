@@ -1,3 +1,29 @@
+import { useState } from 'react';
+import Navbar from '../Components/navbar.jsx';
+import Videos from '../Components/Videos.jsx';
+import { fetchVideos } from '../services/fetchvideos';
+
+const YouTubeSearch = () => {
+  const [videos, setVideos] = useState([]);
+  const [query, setQuery] = useState('');
+
+  const handleSearch = async () => {
+    if (query.trim() === '') return; // Avoid searching if the query is empty
+    const fetchedVideos = await fetchVideos(query);
+    setVideos(fetchedVideos);
+  };
+  
+
+  return (
+    <div className="bg-black min-h-screen">
+      {/* Pass props to Navbar */}
+      <Navbar query={query} setQuery={setQuery} handleSearch={handleSearch} />
+      <Videos videos={videos} />
+    </div>
+  );
+};
+
+export default YouTubeSearch;
 // import axios from 'axios';
 
 
@@ -41,33 +67,33 @@
     
 //   }
 // };
-import { createContext, useContext, useEffect, useState } from "react";
-import { fetchData } from "../utils/rapidapi";
+// import { createContext, useContext, useEffect, useState } from "react";
+// import { fetchData } from "../utils/rapidapi";
 
-export const AuthContext = createContext();
+// export const AuthContext = createContext();
 
-export default function AuthProvider({ children }) {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [value, setValue] = useState("New");
+// export default function AuthProvider({ children }) {
+//   const [loading, setLoading] = useState(false);
+//   const [data, setData] = useState([]);
+//   const [value, setValue] = useState("New");
 
-  useEffect(() => {
-    fetchAlldata(value);
-  }, [value]);
+//   useEffect(() => {
+//     fetchAlldata(value);
+//   }, [value]);
 
-  const fetchAlldata = (query) => {
-    setLoading(true);
-    fetchData(`search/?q=${query}`).then(({ contents }) => {
-      console.log(contents);
-      setData(contents);
-      setLoading(false);
-    });
-  };
-  return (
-    <AuthContext.Provider value={{ loading, data, value, setValue }}>
-      {children}
-    </AuthContext.Provider>
-  );
-}
+//   const fetchAlldata = (query) => {
+//     setLoading(true);
+//     fetchData(`search/?q=${query}`).then(({ contents }) => {
+//       console.log(contents);
+//       setData(contents);
+//       setLoading(false);
+//     });
+//   };
+//   return (
+//     <AuthContext.Provider value={{ loading, data, value, setValue }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// }
 
-export const useAuth = () => useContext(AuthContext);
+// export const useAuth = () => useContext(AuthContext);
