@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Home from './Components/Home';
-import VideoDetail from './Components/VideoDetail.jsx';
+import VideoDetail from './Components/VideoDetail'; // Correct import with default export
 
 // Create a client
 const queryClient = new QueryClient();
