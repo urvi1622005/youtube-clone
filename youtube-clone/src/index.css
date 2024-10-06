@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -15,4 +15,4 @@ html, body, #root {
 #root {
   display: flex;
   flex-direction: column;
-}
+} */
