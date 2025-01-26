@@ -7,7 +7,7 @@ const Sidebar = ({ isOpen }) => {
   return (
     <Box
       bg="gray-900"
-      color="white"
+      color=""
       w={isOpen ? "64" : "0"} // Adjust the width based on the isOpen prop
       h="100vh"
       p={isOpen ? "4" : "0"} // Adjust padding based on the isOpen prop

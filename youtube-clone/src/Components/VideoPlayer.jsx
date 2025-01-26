@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThumbsUp, ThumbsDown, Share, Download, MoreHorizontal } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Share, Download, MoreHorizontal} from 'lucide-react';
 
 const VideoPlayer = ({ video }) => {
   return (
